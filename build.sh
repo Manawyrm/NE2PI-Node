@@ -25,16 +25,15 @@ mkdir -p "${ROOT_DIR}"
 
 cd ${BUILD_DIR}
 
-# # Download a fresh raspios_lite_armhf (32bit)
-# wget -O raspios.img.xz $IMAGE_URL
-# 
-# # Extract .xz
-# xz -d raspios.img.xz
-# 
-# # Extract MBR SD card image into 0.fat (/boot) and 1.img (/)
-# 7z x raspios.img
-# rm raspios.img
-# 
+# Download a fresh raspios_lite_armhf (32bit)
+wget -O raspios.img.xz $IMAGE_URL
+
+# Extract .xz
+xz -d raspios.img.xz
+
+# Extract MBR SD card image into 0.fat (/boot) and 1.img (/)
+7z x raspios.img
+rm raspios.img
 
 # Copy root FS
 mount -o loop 1.img /mount
