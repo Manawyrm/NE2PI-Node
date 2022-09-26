@@ -1,0 +1,1 @@
+console=serial0,115200 console=tty1 fsck.repair=yes snd_bcm2835.enable_compat_alsa=1 snd_bcm2835.enable_hdmi=0 nomodeset otg.lpm_enable=0 root=/dev/nfs ro ip=dhcp nfsroot=172.16.0.1:/home/tobias/Entwicklung/Code/TVPI/node_fs_build/build/root/ modules-load=dwc2,g_ether rootwait g_ether.host_addr=5e:a1:4f:5d:cf:d2 systemd.volatile=state

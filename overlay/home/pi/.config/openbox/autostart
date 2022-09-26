@@ -1,0 +1,9 @@
+#!/bin/bash
+cd /home/pi/
+
+export DISPLAY=:0
+xset s off
+xset -dpms
+unclutter -idle 0.01 -root &
+
+vlc --no-video-title --no-qt-privacy-ask --no-video-deco --no-embedded-video --fullscreen --intf rc --rc-host 0.0.0.0:44500 01\ Homer\'s\ Barbershop\ Quartet.mkv &
