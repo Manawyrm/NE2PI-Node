@@ -65,3 +65,6 @@ umount -fl "${ROOT_DIR}/dev"
 umount "${ROOT_DIR}/proc"
 umount "${ROOT_DIR}/sys"
 umount "${ROOT_DIR}/dev"
+
+# Exit cleanly (for CI)
+exit 0

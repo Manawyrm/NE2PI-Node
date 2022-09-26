@@ -2,14 +2,16 @@
 
 apt update
 apt dist-upgrade -y
-apt -o Dpkg::Options::="--force-confold" -y install i2c-tools mpg123 vlc openbox xorg lightdm unclutter git php-cli php-fpm nginx pigz telnet
+apt -o Dpkg::Options::="--force-confold" -y install i2c-tools mpg123 vlc openbox xorg unclutter git php-cli php-fpm nginx pigz telnet
 
 # Evil hack: libgtk-3-0 seems to be broken/have a dependency conflict at the time of writing
 mv /etc/apt/sources.list.d/raspi.list /etc/apt/raspi.list.disabled
 apt update
-apt -o Dpkg::Options::="--force-confold" -y install lightdm-gtk-greeter
+apt -o Dpkg::Options::="--force-confold" -y install lightdm-gtk-greeter lightdm
 mv /etc/apt/raspi.list.disabled /etc/apt/sources.list.d/raspi.list
 apt update
+
+chown -hR root:root /etc/lightdm/lightdm.conf
 
 systemctl enable lightdm
 systemctl enable nginx
