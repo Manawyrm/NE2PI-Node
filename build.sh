@@ -56,6 +56,7 @@ mount --rbind /dev "${ROOT_DIR}/dev/"
 
 # Run armhf 2nd stage script (apt, initramfs, etc.)
 chroot "${ROOT_DIR}" /2nd_stage.sh
+rm "${ROOT_DIR}/2nd_stage.sh"
 
 # Unmount everything again
 umount -fl "${ROOT_DIR}/proc"

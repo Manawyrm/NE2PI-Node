@@ -1,8 +1,9 @@
 #!/bin/bash
 
 apt update
-DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" dist-upgrade -y
-DEBIAN_FRONTEND=noninteractive apt -o Dpkg::Options::="--force-confold" -y install i2c-tools mpg123 vlc openbox xorg lightdm lightdm-gtk-greeter unclutter git php-cli php-fpm nginx pigz telnet
+apt -o Dpkg::Options::="--force-confold" dist-upgrade -y
+apt -o Dpkg::Options::="--force-confold" -y install i2c-tools mpg123 vlc openbox xorg lightdm unclutter git php-cli php-fpm nginx pigz telnet
+apt -o Dpkg::Options::="--force-confold" -y install lightdm-gtk-greeter
 systemctl enable lightdm
 systemctl enable nginx
 systemctl enable ssh
@@ -37,3 +38,7 @@ systemctl disable plymouth-read-write.service
 systemctl disable plymouth-start.service
 systemctl disable raspi-config.service
 
+# Install raspi-teletext
+git clone --depth=1 https://github.com/ali1234/raspi-teletext.git /opt/raspi-teletext
+cd /opt/raspi-teletext
+make -j 16

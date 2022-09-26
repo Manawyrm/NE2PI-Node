@@ -1,0 +1,40 @@
+name: Node Firmware Build
+
+on:
+  create: { }
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    container: 
+      image: debian:11
+      options: --privileged
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Update apt lists
+        run: apt update -y
+
+      - name: Run build process
+        run: bash build.sh
+
+      - name: Compress root fs
+        run: tar cfvz root.tar.gz build/root/
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: node-fs-artifacts
+          path: root.tar.gz
+
+      - name: Release build artifacts
+        uses: softprops/action-gh-release@v1
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          files: root.tar.gz
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

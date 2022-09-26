@@ -4,3 +4,4 @@ tmpfs		/var/log		tmpfs		nodev,nosuid		0		0
 tmpfs		/var/tmp		tmpfs		nodev,nosuid		0		0
 tmpfs		/var/run		tmpfs		nodev,nosuid		0		0
 tmpfs		/home/pi/.cache		tmpfs		nodev,nosuid		0		0
+
