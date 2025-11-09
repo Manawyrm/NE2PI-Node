@@ -11,6 +11,8 @@
 #
 # By default this script does nothing.
 
+export PI_SERIAL=`cat /proc/cpuinfo | grep Serial | cut -d ' ' -f 2`
+
 # Print the IP address
 _IP=$(hostname -I) || true
 if [ "$_IP" ]; then
@@ -34,6 +36,9 @@ chown -R www-data /var/log/nginx
 mkdir -p /run/php
 
 modprobe i2c-dev
-i2ctransfer -y 1 w4@0x65 0xE2 0x0C 0x24 0xf4
+
+
+hostname tvpi-node-$PI_SERIAL
+
 
 exit 0

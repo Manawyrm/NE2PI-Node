@@ -5,7 +5,7 @@ export DISPLAY=:0
 xset s off
 xset -dpms
 unclutter -idle 0.01 -root &
-amixer set PCM 90%
+amixer set PCM 100%
 
 sudo /opt/raspi-teletext/tvctl on
 sudo /opt/raspi-teletext/teletext &
